@@ -1,8 +1,10 @@
 {
   "name": "campaigns",
+  "homepage": "http://anujkumar10.github.io/ManageCampaign",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "gh-pages": "^2.1.1",
     "react": "^16.9.0",
     "react-datepicker": "^2.9.6",
     "react-dom": "^16.9.0",
@@ -13,7 +15,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
