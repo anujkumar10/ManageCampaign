@@ -3,12 +3,10 @@ import { Icon, Label, Menu, Table, Modal, Button, Image, Header } from 'semantic
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
-import CAMPAIGNDATA from "./data/campaign-data";
-import campaignData from "./data/campaign-data";
 
 const CampaignTable = (props) => {
 
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState(''); 
   const [campaignSelected, setCampaignSelected] = useState({});
   const [rowSelected, setRowSelected] = useState({});
   const [openModel, setOpenModel] = useState(false);
@@ -24,20 +22,22 @@ const CampaignTable = (props) => {
    setDate(campaignSelected.date);
   };
 
-  const onDatePickerSelected = (campaign) => {
+  const onDatePickerSelected = (e, campaign) => {
+    e.stopPropagation();
     setCampaignSelected(campaign);
-    setTimeout(() => {
-      setOpenModel(false);
-    },0);
   }
 
   const openPopup = (campaign) => {
-    setRowSelected(campaign)
-    setOpenModel(true);
+    setRowSelected(campaign);
+    setOpenModel(true);   
+  }
+
+  const closePopup = () => {
+    setOpenModel(false);
   }
 
   const createTableRows = () => {
-    return CAMPAIGNDATA.map(campaign => {
+    return props.campaignData.map(campaign => {
       return (
         <Fragment>
           <Table.Row onClick = {() => openPopup(campaign)}>
@@ -61,7 +61,7 @@ const CampaignTable = (props) => {
               <p className = "action-col-content">
                 <Icon size ="large" name = "chart bar" /> REPORT
               </p>
-              <p className = "action-col-content" onClick={() => onDatePickerSelected(campaign)}>
+              <p className = "action-col-content" onClick={(e) => onDatePickerSelected(e, campaign)}>
               <DatePicker
                 selected={new Date(campaign.date)}
                 onChange={onDateChange}
@@ -78,17 +78,19 @@ const CampaignTable = (props) => {
   }
 
   const createModal = () => {
-    console.log('row selected is', rowSelected);
     return (
       <Modal open = {openModel}>
-          <Modal.Header>CAMPAIGN INFORMATION</Modal.Header>
+          <Modal.Header>CAMPAIGN INFORMATION
+          <Button basic color='red' style ={{ float: "right"}} content="close" onClick={() => closePopup()} />
+          </Modal.Header>
           <Modal.Content>
             <Modal.Description>
-              <Header>{`Campaign Date: ${rowSelected.date}`}</Header>
-              <p>
-              {`Company: ${rowSelected.company}`}
-              </p>
+            
+              <Header>{`Campaign Date: ${rowSelected.date}`}
+              </Header>
+              <p>{`Company: ${rowSelected.company}`}</p>
               <p>{`Country: ${rowSelected.country}`}</p>
+              <p>{`Price: $10`}</p>
             </Modal.Description>
           </Modal.Content>
         </Modal>
