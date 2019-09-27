@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4d2d13f38d2a06f46ab57a96ca414e00",
+    "revision": "1d801746103accab96cf4ca67dea7493",
     "url": "/ManageCampaign/index.html"
   },
   {
-    "revision": "73fe1d51706b3bc0b366",
+    "revision": "71702df0f0d0906b7c8b",
     "url": "/ManageCampaign/static/css/2.e80e58db.chunk.css"
   },
   {
-    "revision": "3737a58f3ee1514ab2a1",
-    "url": "/ManageCampaign/static/css/main.63cbad5d.chunk.css"
+    "revision": "e673a4bc3add5ea84347",
+    "url": "/ManageCampaign/static/css/main.221d63cc.chunk.css"
   },
   {
-    "revision": "73fe1d51706b3bc0b366",
-    "url": "/ManageCampaign/static/js/2.de7ff585.chunk.js"
+    "revision": "71702df0f0d0906b7c8b",
+    "url": "/ManageCampaign/static/js/2.1eff5945.chunk.js"
   },
   {
-    "revision": "3737a58f3ee1514ab2a1",
-    "url": "/ManageCampaign/static/js/main.3f7ec673.chunk.js"
+    "revision": "e673a4bc3add5ea84347",
+    "url": "/ManageCampaign/static/js/main.2db5fbcf.chunk.js"
   },
   {
     "revision": "257ddff41ea822cc520b",
