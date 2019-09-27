@@ -18,7 +18,7 @@ const CampaignTable = (props) => {
   }
 
   const onDateChange = (date) => {
-   campaignSelected.date = date.toISOString().split('T')[0];
+   campaignSelected.date = date.toLocaleString().split('T')[0];
    setDate(campaignSelected.date);
   };
 
@@ -37,9 +37,9 @@ const CampaignTable = (props) => {
   }
 
   const createTableRows = () => {
-    return props.campaignData.map(campaign => {
+    return props.campaignData.map((campaign, index) => {
       return (
-        <Fragment>
+        <Fragment key = {index} >
           <Table.Row onClick = {() => openPopup(campaign)}>
           <Table.Cell>
           <p>{campaign.date}</p>
@@ -62,11 +62,15 @@ const CampaignTable = (props) => {
                 <Icon size ="large" name = "chart bar" /> REPORT
               </p>
               <p className = "action-col-content" onClick={(e) => onDatePickerSelected(e, campaign)}>
+              <label>
               <DatePicker
+                className="picker"
                 selected={new Date(campaign.date)}
                 onChange={onDateChange}
               />
-               {/* <Icon size ="large" name = "calendar alternate outline" /> SCHEDULE AGAIN */}
+              <Icon className="calendar-icon" size ="large" name = "calendar alternate outline" />
+              <div>SCHEDULE AGAIN</div>
+              </label>
               </p>
             </div>
           </Table.Cell>
